@@ -1,0 +1,18 @@
+$blue-hover: #1B94CE;
+$blue-main: #3287bd;
+$white-smoke: #fbfbfb;
+$white-gray: #f4f4f4;
+$gray-middle: #d8d8d8;
+
+$icad: (
+	list-side-distance: 8px,
+	container-width: 1105px,
+	reports-list-item-height: 29px,
+	reports-list-width: 540px,
+
+	reporting: (
+		details-table-height:  468px,
+		details-side-width:    30%,
+		details-wrapper-width: 70%
+	)
+);

@@ -1,0 +1,111 @@
+{{#each reportDetails.data}}
+	<div class="tr">
+		<div class="td">
+			{{ emptyStrInNbsp userData.market }}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.city }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.channel }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.shop }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{ emptyStrInNbsp userData.shopId }}
+		</div>
+		{{#unless userName.role}}
+			<div class="td">
+				{{#equal userData.userId 0 }}
+					n/a
+				{{else}}
+					{{ emptyStrInNbsp userData.email }}
+				{{/equal}}
+			</div>
+		{{/unless}}
+
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ userData.maxScore }}%
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ dateEmptyStrInNbsp userData.lastTest }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.done }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{ emptyStrInNbsp userData.web }}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.app }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.fmm }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.origin }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ dateEmptyStrInNbsp userData.registerDate }}
+			{{/equal}}
+		</div>
+		<div class="td">
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{#equal userData.ambassador 0 }}
+					no
+				{{else}}
+					yes
+				{{/equal}}
+			{{/equal}}
+		</div>
+		<div class="td answer"><span>
+			{{#equal userData.userId 0 }}
+				n/a
+			{{else}}
+				{{ emptyStrInNbsp userData.answer }}
+			{{/equal}}</span>
+		</div>
+	</div>
+{{/each}}

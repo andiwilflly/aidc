@@ -1,0 +1,23 @@
+<input type="hidden" name="compareId" value="{{ compareId }}"/>
+
+<div class="datepicker">
+
+	<div class="datepicker__title">Set time period</div>
+
+	<div class="datepicker__wrap item-wrapper {{ reportModel.errors.startDate.class }}">
+		<input type="text" class="datepicker__input js-datepicker" name="startDate" id="start-date" placeholder="From" autocomplete="off">
+		<!--<input type="hidden" name="startWeek" id="start-week" value="">-->
+		{{#if reportModel.errors.startDate.msg }}
+			<div class="error-msg js-error-msg">{{ reportModel.errors.startDate.msg }}</div>
+		{{/if}}
+	</div>
+
+	<div class="datepicker__wrap item-wrapper {{ reportModel.errors.endDate.class }}">
+		<input type="text" class="datepicker__input js-datepicker" name="endDate" id="end-date" placeholder="To" autocomplete="off">
+		<!--<input type="hidden" name="endWeek" id="end-week" value="">-->
+		{{#if reportModel.errors.endDate.msg }}
+			<div class="error-msg js-error-msg">{{ reportModel.errors.endDate.msg }}</div>
+		{{/if}}
+	</div>
+
+</div>

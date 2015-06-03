@@ -1,0 +1,137 @@
+<!-- Reporting period will render here -->
+{{{ reportingPeriod }}}
+
+<div class="reporting__change-report">
+	<a class="simple-link" href="#reporting/show/{{ reportModel.compareId }}/{{ reportModel.id }}">Close detail view</a>
+	<a class="butn btn-blue" id="save-report-btn" href="#reporting/save/{{ reportModel.compareId }}/{{ reportModel.id }}">Save Report</a>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="reporting__details" id="reporting-details">
+
+	<!-- Left side of Reporting Details table -->
+	<div class="reporting__details-side-wrapper">
+		<div class="reporting__details-side-head-wrapper">
+			<div class="reporting__table reporting__details-head" id="reporting-details-side-head">
+				<div class="thead">
+					<div class="tr">
+						<div class="th">
+							{{#if reportDetails.userNameLabels.userId }}
+								{{reportDetails.userNameLabels.userId}}<span class="sort-arrows" data-sort="userId" data-order=""></span>
+							{{else}}
+								{{reportDetails.userNameLabels.lastName}}<span class="sort-arrows" data-sort="lastName" data-order=""></span>
+							{{/if}}
+						</div>
+						{{#unless reportDetails.userNameLabels.userId }}
+							<div class="th">{{reportDetails.userNameLabels.firstName}}<span class="sort-arrows" data-sort="firstName" data-order=""></span></div>
+						{{/unless}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="reporting__details-side" id="reporting-details-side">
+			<div class="reporting__details-inner js-reporting-details-inner">
+
+				<div class="js-reporting-details-mover"></div>
+
+				<div class="reporting__table reporting__details-names" id="reporting-details-names">
+					<div class="thead">
+						<div class="tr">
+							<div class="th">
+								{{#if reportDetails.userNameLabels.userId }}
+									{{reportDetails.userNameLabels.userId}}
+								{{else}}
+									{{reportDetails.userNameLabels.lastName}}
+								{{/if}}
+							</div>
+							{{#unless reportDetails.userNameLabels.userId }}
+								<div class="th">{{reportDetails.userNameLabels.firstName}}</div>
+							{{/unless}}
+						</div>
+					</div>
+					<div class="tbody">
+						<!-- reporting-details-side.hbs templates goes here -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Right side of Reporting Details table -->
+	<div class="reporting__details-head-wrapper">
+		<div class="reporting__table reporting__details-head" id="reporting-details-head">
+			<div class="thead">
+				<div class="tr">
+						<div class="th">{{ reportDetails.userDataLabels.market }}<span class="sort-arrows" data-sort="market" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.city }}<span class="sort-arrows" data-sort="city" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.channel }}<span class="sort-arrows" data-sort="channel" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.shop }}<span class="sort-arrows" data-sort="shop" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.shopId }}<span class="sort-arrows" data-sort="shopId" data-order=""></span></div>
+						{{#if reportDetails.userDataLabels.email}}
+							<div class="th">{{ reportDetails.userDataLabels.email }}<span class="sort-arrows" data-sort="email" data-order=""></span></div>
+						{{/if}}
+						<div class="th">{{ reportDetails.userDataLabels.maxScore }}<span class="sort-arrows" data-sort="maxScore" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.lastTest }}<span class="sort-arrows" data-sort="lastTest" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.done }}<span class="sort-arrows" data-sort="done" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.web }}<span class="sort-arrows" data-sort="web" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.app }}<span class="sort-arrows" data-sort="app" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.fmm }}<span class="sort-arrows" data-sort="fmm" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.origin }}<span class="sort-arrows" data-sort="origin" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.registerDate }}<span class="sort-arrows" data-sort="registerDate" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.ambassador }}<span class="sort-arrows" data-sort="ambassador" data-order=""></span></div>
+						<div class="th">{{ reportDetails.userDataLabels.answer }}<span class="sort-arrows" data-sort="answer" data-order=""></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="reporting__details-container" id="reporting-details-container">
+		<div class="reporting__details-wrapper" id="reporting-details-wrapper">
+			<div class="reporting__details-inner js-reporting-details-inner">
+
+				<div class="js-reporting-details-mover"></div>
+
+				<div class="reporting__table reporting__details-table" id="reporting-details-table">
+					<div class="thead">
+						<div class="tr">
+							<div class="th"><span>{{ reportDetails.userDataLabels.market }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.city }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.channel }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.shop }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.shopId }}</span></div>
+							{{#if reportDetails.userDataLabels.email}}
+								<div class="th"><span>{{ reportDetails.userDataLabels.email }}</span></div>
+							{{/if}}
+							<div class="th"><span>{{ reportDetails.userDataLabels.maxScore }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.lastTest }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.done }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.web }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.app }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.fmm }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.origin }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.registerDate }}</span></div>
+							<div class="th"><span>{{ reportDetails.userDataLabels.ambassador }}</span></div>
+							<div class="th">{{ reportDetails.userDataLabels.answer }}</div>
+						</div>
+					</div>
+					<div class="tbody">
+						<!-- reporting-details-part.hbs templates goes here -->
+					</div>
+				</div>
+
+				<div id="reporting-details-helper"></div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="reporting__save-report">
+	<form method="post" action="{{formDetailedActionUriXlsx}}" target="_blank" id="exportToFile">
+		<input type="hidden" name="tx_smianalytics_smianalytics[formData]" value="{{reportModel.id}}&{{reportModel.compareId}}Id={{reportModel.objectId}}" />
+		<input type="hidden" name="tx_smianalytics_smianalytics[fileName]" value="ICAD Report" />
+		<button type="submit"
+		        class="export-excel-link"><i></i><span>Export as excel file</span>
+		</button>
+	</form>
+</div>

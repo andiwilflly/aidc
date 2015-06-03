@@ -1,0 +1,34 @@
+<div class="reports-list icad-block">
+
+	<div class="title">
+		Your saved reports
+	</div>
+
+	{{#if savedReports }}
+		<!-- This block set position of jQuery UI tooltip -->
+		<div id="fixed-tooltip-helper"></div>
+
+		<ul class="saved-list" id="saved-list">
+			{{#list savedReports}}
+				<li class="saved-list__item js-saved-list-item" title="[tooltip]" data-name="{{ name }}">
+					{{#if model.isDetailed }}
+						<a class="saved-list__link js-saved-list-link" href="#reporting/details/{{ model.compareId }}/{{ model.objectId }}/{{ model.id }}">{{ name }}</a>
+					{{else}}
+						<a class="saved-list__link js-saved-list-link" href="#reporting/show/{{ model.compareId }}/{{ model.id }}">{{ name }}</a>
+					{{/if}}
+
+					<div class="remove-saved">
+						<div class="remove-saved__trash js-remove-saved-trash"></div>
+						<div class="remove-saved__confirmation js-remove-saved-confirmation">
+							<a class="simple-link remove-saved__cancel-btn js-remove-cancel-btn">cancel</a>
+							<button class="remove-saved__remove-btn js-remove-saved-report-btn" data-reportuid={{reportUid}}>delete</button>
+						</div>
+					</div>
+				</li>
+			{{/list}}
+		</ul>
+	{{else}}
+		<div class="saved-list__empty"><p>No saved reports</p></div>
+	{{/if}}
+
+</div>

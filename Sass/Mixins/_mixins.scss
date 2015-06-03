@@ -1,0 +1,154 @@
+@import "msprite";
+//@import "bem";
+
+@mixin disable-selection {
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+
+	/* No support for these yet, use at own risk */
+	-o-user-select: none;
+	user-select: none;
+}
+
+@mixin pre-loader($width, $height, $position: center center, $background-color: _get($globals, white), $retina: false) {
+	@if $retina {
+		background-image: url("../../../../smi_templates/Resources/Public/Img/preloaders/preloader_#{$width}x#{$height}_retina.gif");
+		background-size: #{$width}px #{$height}px;
+	} @else {
+		background-image: url("../../../../smi_templates/Resources/Public/Img/preloaders/preloader_#{$width}x#{$height}.gif");
+	}
+	background-position: $position;
+	background-repeat: no-repeat;
+	background-color: $background-color;
+	z-index: 10000;
+}
+
+// Mixin for creating animations using single or "all" property transitions
+// @include transition(PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION)
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+/**
+ * Set background, width and height for image.
+ * NOTE: Image size must be twice bigger image for desktop
+ * NOTE: @function make-url() can be used for long urls like '../../../../smi_templates/Resources/Public/Img/scroll_tool_blue.png'
+ * Arguments: [image url path (settings in config.rb)],
+ 			  [image container size],
+ 			  [background position]]
+ */
+@mixin data-background-retina($url, $custom-size: true, $position: 0 0, $is-inline: true) {
+	$height: round(image-height($url) / 2);
+	$width: round(image-width($url) / 2);
+	background: {
+		repeat: no-repeat;
+		position: $position;
+	}
+	@if $is-inline {
+		background-image: inline-image($url);
+	} @else {
+		background-image: url($url);
+	}
+	@if $custom-size {
+		height: $height;
+		width: $width;
+	}
+	@include background-size($width, $height);
+}
+
+/**
+ * Make wrapper for image that can have any size.
+ * Image in this wrapper always centered by horizontal and vertical position.
+ * Arguments: [width],
+ 			  [height],
+ 			  [background]
+ */
+@mixin img-centered($container-width, $container-height, $container-background: transparent) {
+	background: $container-background;
+	overflow: hidden;
+	width: $container-width;
+	height: $container-height;
+	line-height: $container-height;
+	text-align: center;
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+/**
+ * Constructor of information messages.
+ * Arguments: [text color], [image url], [background position].
+ */
+@mixin msg-constructor($color, $url, $position: 0 0) {
+	color: $color;
+	background: url($url) no-repeat;
+	background-position: $position;
+	background-size: 18px;
+	min-height: 30px;
+	padding: 0 25px 0 23px;
+	margin-bottom: 10px;
+}
+
+/**
+ * Add justify alignment for blocks in block list.
+ */
+@mixin j-ul() {
+	width: 100%;
+	text-align: justify;
+
+	&:after {
+		display: inline-block;
+		content: "";
+		zoom: 1;
+		*display: inline;
+		width: 100%;
+	}
+}
+@mixin j-li() {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	vertical-align: top;
+}
+
+/**
+ * Set border for box.
+ * Arguments: [border-width border-style border-color], ...
+ */
+@mixin border($border: false, $border_horizontal: false, $border_bottom: false, $border_left: false) {
+	@if ($border and $border_horizontal and $border_bottom and $border_left) {
+		border-top: $border;
+		border-right: $border_horizontal;
+		border-bottom: $border_bottom;
+		border-left: $border_left;
+	} @else if ($border and $border_horizontal and $border_bottom) {
+		border: $border_horizontal;
+		border-top: $border;
+		border-bottom: $border_bottom;
+	} @else if ($border and $border_horizontal) {
+		border: $border;
+		border-right: $border_horizontal;
+		border-left: $border_horizontal;
+	} @else {
+		border: $border
+	}
+}
+
+/**
+* Wrap @content into retina @media query
+*/
+@mixin media-retina() {
+	@media (min-device-pixel-ratio: 2),
+	(min--moz-device-pixel-ratio: 2),
+	(-o-min-device-pixel-ratio: 2/1),
+	(-webkit-min-device-pixel-ratio: 2),
+	(min-resolution: 2dppx), (min-resolution: 192dpi) {
+		@content;
+	}
+}

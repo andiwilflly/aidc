@@ -1,0 +1,13 @@
+<div class="reporting__period">
+	<p class="reporting__period-title">
+		Compare activity by week / month:
+		{{ reportModel.marketName }} | {{ reportModel.activityName }}
+		{{#if reportModel.weekName }}
+			| Time period - per {{ reportModel.weekName }}
+		{{/if}}
+	</p>
+	<p class="reporting__period-value">
+		<span><b>From: </b>w{{ getWeek reportModel.requestObj.startDate }}  {{ dateReplaceDotOnSlash reportModel.requestObj.startDate }}</span>
+		<span><b>To:   </b>w{{ getWeek reportModel.requestObj.endDate }} {{ dateReplaceDotOnSlash reportModel.requestObj.endDate }}</span>
+	</p>
+</div>

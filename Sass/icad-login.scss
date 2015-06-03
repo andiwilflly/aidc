@@ -1,0 +1,63 @@
+@import "globals";
+@import "Partials/icad-config";
+@import "Partials/icad-common";
+
+.icad-login {
+
+	&.non-authenticated {
+		.content-middle .login-box-1 {
+			margin-left: 10px;
+			margin-top: 70px;
+		}
+	}
+
+	.main {
+		background: url(/typo3conf/ext/smi_analytics/Resources/Public/Img/ICAD/icad-login-bg.png) 50% 100% no-repeat;
+
+		.content-left {
+			h2 {
+				margin-bottom: 5px;
+				margin-left: 0;
+			}
+			p {
+				line-height: 18px;
+				margin-bottom: 0;
+				margin-left: 40px;
+			}
+		}
+
+		.content-bottom-left {
+			h2, p {
+				margin-left: 50px;
+			}
+		}
+	}
+
+	.container {
+		max-width: _get($icad, container-width);
+		width: _get($icad, container-width);
+	}
+
+	.content-middle {
+		margin: 0 0 70px;
+	}
+
+	.content-bottom {
+		margin-bottom: 0;
+		.container {
+			background: none;
+		}
+	}
+
+	.airplain {
+		display: none;
+	}
+
+	#main-footer {
+		border: none;
+	}
+
+	input:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0 1000px white inset;
+	}
+}

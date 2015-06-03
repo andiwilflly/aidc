@@ -1,0 +1,38 @@
+<div class="reporting">
+	<!-- Reporting period will render here -->
+	{{{ reportingPeriod }}}
+
+	<div class="reporting__change-report">
+		{{#url '#dashboard'}}Back to overview{{/url}}
+		<a class="butn btn-blue is-disabled" id="change-request" href="#compare/edit/{{ reportModel.compareId }}/{{ reportModel.id }}">Change request</a>
+	</div>
+
+	<!-- Chart filer select -->
+	<div class="reporting__select-report">
+		<select id="select-report-chart" class="custom-select js-custom-select">
+			{{#each reportModel.data.chartOptions}}
+				<option value="{{value}}">{{name}}</option>
+			{{/each}}
+		</select>
+	</div>
+
+	<!-- Chart will render here -->
+	<div class="reporting__chart-legend"></div>
+	<div id="reporting-chart" class="reporting__chart"></div>
+	<div id="reporting-chart-range" class="reporting__chart-range"></div>
+
+	<!-- Reporting table will render here -->
+	<div id="reporting-table-wrapper"></div>
+	{{{ reportingTable }}}
+
+	<div class="reporting__save-report">
+		<a href="#reporting/save/{{ reportModel.compareId }}/{{ reportModel.id }}" class="simple-link" id="save-report-btn">Save report</a>
+
+		<form method="post" action="{{formActionUriXlsx}}" target="_blank" id="exportToFile">
+			<input type="hidden" name="tx_smianalytics_smianalytics[formData]" value="{{reportModel.id}}" />
+			<input type="hidden" name="tx_smianalytics_smianalytics[fileName]" value="ICAD Report" />
+			<button type="submit" class="export-excel-link"><i></i><span>Export as excel file</span>
+			</button>
+		</form>
+	</div>
+</div>

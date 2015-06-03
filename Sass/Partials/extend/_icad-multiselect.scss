@@ -1,0 +1,298 @@
+$select: (
+	size: (
+		height: 43px,
+		line-height: 43px,
+		width: 508px,
+		toogle-button-width: 40px,
+		toogle-button-height: 41px
+	)
+);
+
+/**************/
+.ui-multiselect-header {
+	margin-bottom: 3px;
+	padding: 3px 0 3px 4px
+}
+
+.ui-multiselect-header ul {
+	font-size: 0.9em
+}
+
+.ui-multiselect-header ul li {
+	float: left;
+	padding: 0 10px 0 0
+}
+
+.ui-multiselect-header span.ui-icon {
+	float: left
+}
+
+.ui-multiselect-header li.ui-multiselect-close {
+	float: right;
+	text-align: right;
+	padding-right: 0
+}
+
+.ui-multiselect-checkboxes {
+	margin: 13px 0;
+	position: relative /* fixes bug in IE6/7 */;
+	overflow-y: auto
+}
+
+
+.ui-multiselect-checkboxes label input {
+	position: relative;
+	top: 1px
+}
+
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label {
+	text-align: center;
+	font-weight: bold;
+	border-bottom: 1px solid
+}
+
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a {
+	display: block;
+	padding: 3px;
+	margin: 1px 0;
+	text-decoration: none
+}
+
+/**************/
+
+.ui-multiselect {
+	padding: 0 0 0 10px;
+	position: relative;
+	text-align: left;
+
+	&.ui-state-default {
+		background-color: _get($globals, white);
+		background-image: none;
+		border: solid 1px _get($globals, middle-grey);
+		color: _get($globals, black);
+		font-family: Arial, sans-serif;
+		font-size: 13px;
+		font-weight: normal;
+		height: _get($select, height);
+		width: _get($select, width);
+	}
+
+	&.ui-state-active {
+		.ui-icon {
+			&:before {
+				content: '\e603';
+			}
+		}
+	}
+
+	&.ui-corner-all {
+		@include border-radius(0);
+	}
+
+	.ui-icon {
+		@extend %svg-bg;
+		display: block;
+		background: none;
+		float: none;
+		height: _get($select, toogle-button-height);
+		outline: none;
+		position: absolute;
+		right: 0;
+		text-indent: 0;
+		top: 0;
+		width: _get($select, toogle-button-width);
+		&:before {
+			color: _get($globals, dark-grey);
+			content: '\e600';
+			float: right;
+			font-size: 20px;
+			margin-right: 10px;
+			margin-top: 10px;
+		}
+	}
+}
+
+.ui-multiselect-header {
+	&.ui-widget-header {
+		border: none;
+		height: auto;
+		line-height: 16px;
+		margin: 0;
+		padding: 0 10px;
+		text-align: left;
+	}
+	.ui-helper-reset {
+		border-bottom: 1px solid _get($globals, middle-grey);
+		display: block;
+		padding: 14px 0 17px;
+		li {
+			display: block;
+			float: none;
+			margin: 0;
+			padding: 0;
+			position: relative;
+		}
+		a {
+			display: block;
+			padding: 0 0 0 25px;
+		}
+	}
+	span.ui-icon {
+		float: none;
+		left: 0;
+		position: absolute;
+		top: 0;
+	}
+	.ui-multiselect-all {
+		color: _get($globals, dark-grey);
+		text-decoration: none;
+	}
+	.ui-multiselect-none {
+		color: _get($globals, dark-grey);
+		text-decoration: none;
+	}
+	.ui-multiselect-close {
+		display: none;
+	}
+	.ui-icon-check {
+		@include data-background-retina(make-url('x2/unchecked@2x.png'), true);
+	}
+	.ui-icon-closethick {
+		@include data-background-retina(make-url('x2/checked@2x.png'), true);
+	}
+}
+
+.ui-multiselect-menu {
+	display: none;
+	padding: 0;
+	position: absolute;
+	z-index: 10000;
+	text-align: left;
+
+	&.ui-widget-content {
+		background-color: _get($globals, white);
+		background-image: none;
+		border: solid 1px _get($globals, middle-grey);
+		border-top: none;
+	}
+
+	&.ui-corner-all {
+		@include border-radius(0);
+	}
+
+	&.ui-multiselect-single {
+		.ui-multiselect-checkboxes {
+			label {
+				padding: 0;
+			}
+			input {
+				position: absolute !important;
+				top: auto !important;
+				left: -9999px;
+			}
+		}
+	}
+
+	.ui-multiselect-checkboxes {
+		li {
+			clear: both;
+			font-size: 13px;
+			padding: 4px 10px 5px;
+			&:first-child {
+				padding-top: 0;
+			}
+			&:last-child {
+				padding-bottom: 0;
+			}
+
+			label {
+				@include border-radius(0);
+				border: none;
+				cursor: pointer;
+				display: block;
+				font-weight: normal;
+				margin: 0;
+				padding: 0 0 0 20px;
+				position: relative;
+
+				&.ui-state-active {
+					color: _get($globals, dark-grey);
+				}
+
+				&.ui-state-hover {
+					background: none;
+					border: none;
+					color: _get($globals, white);
+					font-weight: normal;
+
+					span {
+						background: _get($globals, blue);
+					}
+				}
+
+				span {
+					display: block;
+					padding: 1px 5px 2px;
+				}
+			}
+
+			input[type="checkbox"] {
+				position: absolute;
+				clip: rect(0, 0, 0, 0);
+				clip: rect(0 0 0 0);
+			}
+
+			input[type="checkbox"] + span::before {
+				@include data-background-retina(make-url('x2/unchecked@2x.png'), true);
+				content: '';
+				display: block;
+				height: 16px;
+				left: 0;
+				position: absolute;
+				top: 2px;
+				width: 16px;
+			}
+
+			input[type="checkbox"]:checked + span::before {
+				@include data-background-retina(make-url('x2/checked@2x.png'), true);
+			}
+		}
+		&.jspScrollable {
+			li {
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+.multiple-select-list {
+	border: solid 1px _get($globals, middle-grey);
+	border-top-width: 0;
+	color: _get($globals, dark-grey);
+	padding: 11px 10px 9px 5px;
+	width: _get($select, width);;
+	&.is-disabled {
+		display: none;
+	}
+}
+
+.multiple-select-list__value {
+	display: inline-block;
+	font-size: 13px;
+	line-height: 20px;
+	padding-bottom: 1px;
+	white-space: nowrap;
+}
+
+.multiple-select-list__close {
+	cursor: pointer;
+	color: _get($globals, blue);
+	margin: 0 5px;
+	&:hover {
+		color: _get($globals, dark-grey);
+	}
+}
+
+.multiple-select-list__divider {
+	margin-right: 5px;
+}

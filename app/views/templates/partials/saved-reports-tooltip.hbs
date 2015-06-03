@@ -1,0 +1,104 @@
+<table>
+
+	{{#equal reportModel.isDetailed true }}
+		<tr>
+			<td>Report: </td>
+			<td>Detailed</td>
+		</tr>
+	{{ else }}
+		<tr>
+			<td>Report: </td>
+			<td>Aggregated</td>
+		</tr>
+	{{/equal}}
+
+	{{#if reportModel.compareId }}
+		<tr>
+			<td>Compare by: </td>
+			{{#equal reportModel.compareId 'week' }}
+				<td>{{ reportModel.requestObj.period }}</td>
+			{{else}}
+				<td>{{ reportModel.compareId }}</td>
+			{{/equal}}
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.requestObj.startDate }}
+		<tr>
+			<td>Start date: </td>
+			<td>{{ reportModel.requestObj.startDate }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.requestObj.endDate }}
+		<tr>
+			<td>End date: </td>
+			<td>{{ reportModel.requestObj.endDate }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.marketName }}
+		<tr>
+			<td>Market: </td>
+			<td>{{ reportModel.marketName }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.activityName }}
+		<tr>
+			<td>Activity: </td>
+			<td>{{ reportModel.activityName }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.fmmName }}
+		<tr>
+			<td>Fmm: </td>
+			<td>{{ reportModel.fmmName }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.userName }}
+		<tr>
+			<td>User name: </td>
+			<td>{{ reportModel.userName }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.channelName }}
+		<tr>
+			<td>Channel: </td>
+			<td>{{ reportModel.channelName }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.selectReportChartVal }}
+		<tr>
+			<td>Current chart option:</td>
+			<td>{{ reportModel.selectReportChartVal }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportNumber }}
+		<tr>
+			<td>Report version:  </td>
+			<td>{{ reportNumber }}</td>
+		</tr>
+	{{/if}}
+
+	{{#if reportModel.selectedFilters }}
+		<tr>
+			<td>Selected {{ ../reportModel.compareId }} filters: </td>
+			<td>
+				<p class="filter-name">
+					{{#each reportModel.selectedFilters }}
+						<span>{{ name }}</span>
+					{{/each}}
+				</p>
+			</td>
+		</tr>
+	{{/if}}
+
+</table>
+
+

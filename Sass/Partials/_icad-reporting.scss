@@ -1,0 +1,236 @@
+.reporting__period {
+	float: left;
+	margin-bottom: 30px;
+	padding-left: 32px;
+	width: 540px;
+}
+
+.icad-container .reporting__period-title {
+	color: _get($globals, blue);
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.reporting__change-report {
+	float: right;
+	text-align: right;
+	width: auto;
+
+	a {
+		display: inline-block;
+		position: relative;
+	}
+
+	.butn.btn-blue {
+		margin-left: 22px;
+		margin-top: 0;
+	}
+}
+
+.reporting__select-report {
+	margin-left: 32px;
+	clear: both;
+	overflow: hidden;
+	.ui-multiselect.ui-state-default {
+		color: _get($globals, blue);
+	}
+}
+
+.reporting__chart {
+	height: 530px;
+}
+
+.reporting__chart-legend {
+	padding: 16px 0 15px 32px;
+	min-height: 20px;
+}
+
+.reporting__chart-seria {
+	font-size: 13px;
+	display: inline-block;
+	line-height: 17px;
+	margin-right: 18px;
+	padding-left: 21px;
+	position: relative;
+	text-transform: capitalize;
+
+	.svg {
+		font-size: 17px;
+		position: absolute;
+		height: 17px;
+		left: 0;
+		top: -2px;
+		width: 17px;
+		&:after {
+			content: "\e617";
+		}
+	}
+}
+
+.reporting__table {
+	$side-padding: 5px;
+	display: table;
+	width: 100%;
+	margin-top: 50px;
+
+
+
+	&--short {
+		.thead {
+			.th {
+				white-space: normal;
+				padding: 0 10px;
+				line-height: 20px;
+			}
+		}
+	}
+
+	.tr {
+		display: table-row;
+		color: _get($globals, dark-grey);
+	}
+
+	.td, .th {
+		display: table-cell;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.thead {
+		display: table-header-group;
+
+		.th {
+			border-bottom: 1px solid _get($globals, black);
+			vertical-align: middle;
+		}
+	}
+
+	.tbody {
+		display: table-row-group;
+		background: $white-smoke;
+
+		.tr {
+			&:nth-child(odd) {
+				background: $white-gray;
+			}
+		}
+
+		.td {
+			border-right: 1px dotted _get($globals, grey);
+			height: 30px;
+			line-height: 30px;
+			padding: 0 10px;
+
+			&:first-of-type {
+				text-align: left;
+				padding-left: $side-padding;
+			}
+
+			&.r-divider {
+				border-right: 1px solid _get($globals, black);
+			}
+		}
+	}
+
+	&--short {
+		.tbody {
+			.tr {
+				&:hover {
+					color: _get($globals, white);
+					background: _get($globals, blue);
+				}
+			}
+
+			.td {
+				&:last-of-type {
+					border: none;
+				}
+			}
+		}
+
+		.th,
+		.td {
+			&:first-of-type {
+				font-weight: bold;
+				text-align: left;
+				padding-left: $side-padding;
+			}
+		}
+	}
+}
+
+
+.reporting__save-report {
+	padding: 13px 0;
+	text-align: right;
+	display: table;
+	float: right;
+
+	a {
+		position: relative;
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	form {
+		display: table-cell;
+	}
+
+	.export-excel-link {
+		@include border-radius(2px 2px);
+		border-width: 0;
+		background: #1d7044;
+		color: _get($globals, white);
+		font-size: 13px;
+		height: 43px;
+		display: inline-block;
+		margin-left: 23px;
+		padding-left: 5px;
+		padding-right: 12px;
+		vertical-align: middle;
+		&:hover,
+		&:focus {
+			color: _get($globals, white);
+		}
+		&.is-disabled {
+			@include opacity(0.6);
+		}
+		i {
+			@include data-background-retina(make-url("Ambassador/x2/excel-icon@2x.png","smi_campaigns"), true, 0 4px);
+			display: inline-block;
+			height: 43px;
+			margin-right: 8px;
+			vertical-align: middle;
+		}
+	}
+
+	.save-report-status-msg {
+		bottom: -10px;
+		min-width: 400px;
+	}
+}
+
+
+.save-report-status-msg {
+	position: absolute;
+	right: 0;
+	color: _get($globals, blue);
+	font-size: 14px;
+	bottom: -36px;
+	cursor: default;
+	font-weight: normal;
+
+	&.error {
+		color: #c32e38;
+	}
+}
+
+#fixed-tooltip-helper {
+	position: absolute;
+	width: 510px;
+	height: 100%;
+	top: 0 !important;
+}

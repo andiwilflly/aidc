@@ -1,0 +1,36 @@
+<div class="reporting__table reporting__table--short" id="reporting-table-short">
+	<div class="thead">
+		<div class="tr">
+			{{#each reportModel.data.report.names}}
+				<div class="th">{{name}}</div>
+			{{/each}}
+		</div>
+	</div>
+	<div class="tbody">
+		{{#each reportModel.data.report.data}}
+			<a class="tr" href="#reporting/details/{{ ../reportModel.compareId }}/{{ objectId }}/{{../reportModel.id}}">
+				<div class="td r-divider">
+					<i class="svg"></i> {{ objectTitle }}
+				</div>
+				<div class="td">
+					{{ training_started }}
+				</div>
+				<div class="td">
+					{{ training_started_attempts }}
+				</div>
+				<div class="td">
+					{{ training_completed }}
+				</div>
+				<div class="td">
+					{{ test_completed }}
+				</div>
+				<div class="td">
+					{{ test_completed_attempts }}
+				</div>
+				<div class="td r-divider">
+					{{ average_score }}%
+				</div>
+			</a>
+		{{/each}}
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="compare-by icad-block">
+
+	<div class="title">
+		Compare activity by markets
+	</div>
+
+	<form id="compare-request-form" class="compare-request-form">
+		<div class="compare-request-form__items">
+			<div class="item-wrapper {{ reportModel.errors.activity.class }}">
+				<select id="select-activity" class="custom-select js-custom-select" name="activity">
+					<option value="">Choose an activity</option>
+					{{#each formData.select_activity}}
+						<option value="{{value}}">{{name}}</option>
+					{{/each}}
+				</select>
+				{{#if reportModel.errors.activity.msg }}
+					<div class="error-msg js-error-msg">{{ reportModel.errors.activity.msg }}</div>
+				{{/if}}
+			</div>
+			<div class="item-wrapper {{ reportModel.errors.market.class }}">
+				<select id="select-market" class="custom-select js-custom-select-multiple" name="market[]" data-text="Choose market(s)" multiple>
+					{{#each formData.select_market }}
+						<option value="{{value}}" title="{{name}}">{{name}}</option>
+					{{/each}}
+				</select>
+				<div class="multiple-select-list" data-disabled-by="#select-market"></div>
+				{{#if reportModel.errors.market.msg }}
+					<div class="error-msg js-error-msg">{{ reportModel.errors.market.msg }}</div>
+				{{/if}}
+			</div>
+		</div>
+
+		<!-- jQuery UI datePicker goes here -->
+		{{{ datePicker }}}
+
+		<div class="compare-request-form__buttons">
+			<a class="simple-link" href="#dashboard">Back to overview</a>
+			<input type="submit" class="butn btn-blue" id="send-request" value="Request"
+			       data-disabled-by="#select-activity,#select-market,#start-date,#end-date" />
+		</div>
+	</form>
+</div>

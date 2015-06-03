@@ -1,0 +1,31 @@
+#page, .main {
+	min-width: _get($icad, container-width);
+	background: _get($globals, white);
+}
+
+#page,
+.wrapper {
+	overflow: visible;
+}
+
+footer .footer-logo {
+	margin-right: 178px;
+}
+
+.title {
+	font-weight: bold;
+}
+
+form {
+	padding: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+	}
+}
+

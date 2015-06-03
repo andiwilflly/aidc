@@ -1,0 +1,40 @@
+.ui-tooltip {
+	max-width: 600px;
+
+	table {
+
+		tr {
+			&:nth-child(odd) {
+
+				td {
+					background: _get($globals, disabled-text-color);
+
+					.filter-name {
+						span {
+							background: whitesmoke;
+						}
+					}
+				}
+			}
+
+			td {
+				padding: 3px 10px;
+				vertical-align: top;
+
+				.filter-name {
+					@include pie-clearfix;
+					white-space: normal;
+					span {
+						white-space: nowrap;
+						background: _get($globals, disabled-text-color);
+						padding: 2px 4px;
+						margin: 2px;
+						display: block;
+						float: left;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+}

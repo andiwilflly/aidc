@@ -1,0 +1,115 @@
+@import "fdebug";
+
+@function make-url($url, $smi: 'smi_templates') {
+	@return '../../../../' + $smi + '/Resources/Public/Img/' + $url;
+}
+
+/**
+ * Return data-bg image url
+ * Arguments: [image url, smi].
+ */
+@function _url($url, $smi: 'smi_templates') {
+	@return inline-image(make-url($url, $smi));
+}
+
+/**
+ * Improved map-get() sass function
+ * Arguments: [map object, item in map].
+ * NOTE: Two levels is maximum nesting depth of map object
+ * Example :
+ * 	$global: (
+ *	 	some: 1,
+ *	 	colors: (
+ *	   	 red: #345567
+ *	 	)
+ * 	);
+ *  _get($global, red);
+ */
+@function _get($map, $item) {
+	@if(type-of(map-get($map, $item)) == 'null') {
+		@each $keyOrValue in $map {
+			@each $subItem in $keyOrValue {
+				@if(type-of($subItem) == 'map') {
+					@if(type-of(map-get($subItem, $item)) != 'null') {
+						@return map-get($subItem, $item);
+					}
+				}
+			}
+		}
+	} @else {
+		@return map-get($map, $item);
+	}
+}
+
+/**
+ * Convert map to list
+ * Arguments: [map, values to return].
+ * NOTE: can return both, keys, values
+ */
+@function to-list($value, $keep: 'both') {
+	$keep: if(index('keys' 'values', $keep), $keep, 'both');
+	@if type-of($value) == map {
+		$keys: ();
+		$values: ();
+		@each $key, $val in $value {
+			$keys: append($keys, $key);
+			$values: append($values, $val);
+		}
+		@if $keep == 'keys' {
+			@return $keys;
+		} @else if $keep == 'values' {
+			@return $values;
+		} @else {
+			@return zip($keys, $values);
+		}
+	}
+	@return if(type-of($value) != list, ($value,), $value);
+}
+
+/**
+ * Convert px to em
+ * Arguments: [pixels value, base font size].
+ */
+@function mq-px2em($px, $base-font-size: 16px) {
+	@if (unitless($px)) {
+		@warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+		@return mq-px2em($px + 0px);
+	} @else if (unit($px) == em) {
+		@return $px;
+	}
+	@return ($px / $base-font-size) * 1em;
+}
+
+/**
+ * Return max value
+ * Arguments: [list of values].
+ */
+@function max($values...) {
+	$max: nth($values, 1);
+
+	@for $i from 2 through length($values) {
+		$value: nth($values, $i);
+		@if $value > $max {
+			$max: $value;
+		}
+	}
+	@return $max;
+}
+
+/**
+ * Return z-index value (EXAMPLE)
+ * Arguments: [key in z-layers].
+ */
+$z-layers: (
+  "goku":            9001,
+  "shoryuken":       8000,
+  "default":            1,
+  "below":             -1,
+  "bottomless-pit": -9000
+);
+@function z($layer) {
+	@if not map-has-key($z-layers, $layer) {
+		@warn "No layer found for `#{$layer}` in $z-layers map. Property omitted.";
+	}
+	@return map-get($z-layers, $layer);
+}

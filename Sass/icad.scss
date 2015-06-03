@@ -1,0 +1,151 @@
+@import "globals";
+@import "main";
+@import "Partials/Basic/condition-classes";
+
+@import "Partials/icad-config";
+@import "Partials/extend/icad-jscrollpane";
+@import "Partials/extend/icad-multiselect";
+@import "Partials/extend/icad-datepicker";
+@import "Partials/extend/icad-growl";
+@import "Partials/extend/icad-tooltip";
+
+@import "Partials/icad-common";
+@import "Partials/icad-dashboard";
+@import "Partials/icad-reporting";
+@import "Partials/icad-reporting-details";
+@import "Partials/icad-compare-by";
+
+.icad-container {
+	@import "Partials/Ambassador/ambassador-config";
+	@import "Partials/Ambassador/typography";
+	@import "Partials/Basic/buttons";
+
+	.is-disabled {
+		background: rgb(238, 238, 238);
+		border: 1px solid rgb(216, 216, 216);
+		a.sbSelector {
+			color: gray;
+		}
+	}
+
+	.simple-link.is-disabled {
+		background: transparent;
+		border: none;
+		color: #D7E9F5;
+	}
+
+	.export-excel-link.is-disabled {
+		background: #1d7044;
+	}
+}
+
+// Preloader
+#icad-loader {
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	background-color: rgba(237, 237, 237, 0);
+	cursor: progress;
+	background-image: url(/typo3conf/ext/smi_templates/Resources/Public/Img/spinner.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100px;
+}
+
+// Rewrite styles
+html {
+	overflow-y: scroll;
+}
+
+.page-icad .container {
+	max-width: _get($icad, container-width);
+	width: _get($icad, container-width);
+}
+
+.airplain {
+	display: none;
+}
+
+// Base styles
+.icad-container {
+	min-height: 657px;
+	overflow: hidden;
+	padding-bottom: 50px;
+
+	> p {
+		margin-left: 42px;
+		margin-bottom: 10px;
+	}
+}
+
+.icad-content {
+	padding: 0 10px;
+}
+
+.icad-meet {
+	margin-bottom: 30px;
+	margin-left: 42px;
+}
+
+.icad-block {
+	@include experimental(box-shadow, 2px 2px 6px 0px #D9D9D9);
+	padding: 22px 33px;
+	background: _get($globals, white);
+	margin-bottom: 15px;
+
+	&.reports-list {
+		position: relative;
+		padding: 22px 24px;
+		width: _get($icad, reports-list-width);
+		.title {
+			margin-left: 8px;
+		}
+	}
+}
+
+.item-wrapper {
+	position: relative;
+	margin-bottom: 10px;
+	@include pie-clearfix;
+
+	&.error-item-wrapper {
+
+		.ui-multiselect,
+		.js-datepicker {
+			border: 1px solid #c6181f;
+		}
+	}
+
+	.error-msg {
+		color: #c6181f;
+		font-size: 11px;
+		margin: 3px 0;
+	}
+
+	.icad-radio {
+		float: left;
+		margin-top: 8px;
+		margin-right: 20px;
+
+		.prettyradio {
+			float: left;
+			width: 20px;
+		}
+
+		label {
+			font-weight: normal;
+			line-height: 22px;
+			margin: 0;
+		}
+	}
+}
+
+.custom-select {
+	width: 508px;
+}
+
+.icon-head i {
+	float: left;
+	margin-right: 1px;
+}

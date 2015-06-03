@@ -1,0 +1,44 @@
+/**
+* Compass sprite retina background helper
+* Arguments: [sprite],
+*		     [name of the icon in sprite],
+*		     [change X position value],
+*		     [change Y position value],
+*		     [is retina sprite]
+* EXAMPLE: $icons: sprite-map("icons/*.png");
+*          .key-benefits {
+* 			   @include sprite-background-retina($icons, key-benefits, $retina: false, $x: 0, $y: 0);
+*		    }
+*/
+@mixin sprite-background-retina($sprite, $icon-name, $retina: true, $x: 0, $y: 0) {
+	$factor: if($retina, 2, 1);
+	$sprite-width:  round(sprite-width($sprite) / $factor);
+	$sprite-height: round(sprite-height($sprite) / $factor);
+
+	background: sprite($sprite, $icon-name) no-repeat;
+	background-position: round(nth(sprite-position($sprite, $icon-name), 1) / $factor) + $x
+	round(nth(sprite-position($sprite, $icon-name), 2) / $factor) + $y;
+	@include background-size($sprite-width, $sprite-height);
+}
+
+/**
+* Compass sprite retina cycle generator
+* Arguments: [sprite],
+*		     [list of classes for sprite icons],
+*		     [change X position value],
+*		     [change Y position value],
+*		     [is retina sprite]
+* EXAMPLE: $icons: sprite-map("icons/*.png");
+*          @include sprite-background-cycle($icons);
+*/
+@mixin sprite-background-generator($sprite, $classes: false, $retina: true, $x: 0, $y: 0) {
+	$classes: if($classes, $classes, sprite-names($sprite));
+	//	@include debug($classes);
+	$i:0;
+	@each $class in $classes {
+		$i: $i + 1;
+		.#{$class}  {
+			@include sprite-background-retina($sprite, nth(sprite-names($sprite), $i), $retina, $x, $y);
+		}
+	}
+}

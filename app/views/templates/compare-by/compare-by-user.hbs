@@ -1,0 +1,52 @@
+<div class="compare-by icad-block">
+
+	<div class="title">
+		Compare activity by User Type
+	</div>
+
+	<form id="compare-request-form">
+		<div class="compare-request-form__items">
+			<div class="item-wrapper {{ reportModel.errors.market.class }}">
+				<select id="select-market" class="custom-select js-custom-select" name="market">
+					<option value="">Choose a market</option>
+					{{#each formData.select_market }}
+						<option value="{{value}}" {{selected}}>{{name}}</option>
+					{{/each}}
+				</select>
+				{{#if reportModel.errors.market.msg }}
+					<div class="error-msg js-error-msg">{{ reportModel.errors.market.msg }}</div>
+				{{/if}}
+			</div>
+			<div class="item-wrapper {{ reportModel.errors.activity.class }}">
+				<select id="select-activity" class="custom-select js-custom-select" name="activity">
+					<option value="">Choose an activity</option>
+					{{#each formData.select_activity}}
+						<option value="{{value}}">{{name}}</option>
+					{{/each}}
+				</select>
+				{{#if reportModel.errors.activity.msg }}
+					<div class="error-msg js-error-msg">{{ reportModel.errors.activity.msg }}</div>
+				{{/if}}
+			</div>
+			<div class="item-wrapper {{ reportModel.errors.user.class }}">
+				<select id="select-type" class="custom-select js-custom-select-multiple" name="user[]" data-text="Choose user type" multiple>
+					{{#each formData.select_user}}
+						<option value="{{value}}" title="{{name}}">{{name}}</option>
+					{{/each}}
+				</select>
+				<div class="multiple-select-list" data-disabled-by="#select-type"></div>
+				{{#if reportModel.errors.user.msg }}
+					<div class="error-msg js-error-msg">{{ reportModel.errors.user.msg }}</div>
+				{{/if}}
+			</div>
+		</div>
+
+		{{{ datePicker }}}
+
+		<div class="compare-request-form__buttons">
+			{{#url '#dashboard'}}Back to overview{{/url}}
+			<input type="submit" class="butn btn-blue is-disabled" id="send-request" value="Request"
+			       data-disabled-by="#select-market,#select-activity,#select-type,#start-date,#end-date" />
+		</div>
+	</form>
+</div>

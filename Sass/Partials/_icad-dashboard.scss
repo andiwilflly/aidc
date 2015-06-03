@@ -1,0 +1,142 @@
+.compare-list {
+
+	&__item {
+		margin-bottom: 3px;
+		background: _get($globals, blue);
+
+		&:hover {
+			background: $blue-hover;
+		}
+	}
+
+	&__item.is-disabled {
+		background: #D2D2D2;
+
+		.compare-list__link {
+			color: _get($globals, white);
+			&:before {
+				background: _get($globals, white);
+				color: _get($globals, disabled-text-color);
+			}
+		}
+	}
+
+	.compare-list__link {
+		font-family: Arial, sans-serif;
+		@extend %svg-bg;
+		height: 26px;
+		line-height: 26px;
+		color: _get($globals, white);
+		display: block;
+		margin-left: _get($icad, list-side-distance);
+
+		&:hover {
+			color: _get($globals, white);
+		}
+
+		&:before {
+			content: '\e602';
+			float: right;
+			margin-right: _get($icad, list-side-distance);
+			background: _get($globals, white);
+			color: _get($globals, blue);
+			margin-top: 6px;
+		}
+	}
+}
+
+// BLOCK: [saved-list]
+$saved-list: saved-list;
+$link-width: 95%;
+$remove-item-width: 100 - $link-width;
+.#{saved-list} {
+
+	&__item {
+		@include pie-clearfix;
+
+		.#{saved-list}__link {
+			color: _get($globals, black);
+
+			&:hover {
+				color: _get($globals, blue);;
+			}
+		}
+	}
+
+	&__link {
+		@extend %svg-bg;
+		display: block;
+		border-bottom: 1px solid _get($globals, blue);
+		height: _get($icad, reports-list-item-height);
+		float: left;
+		width: $link-width;
+		line-height: _get($icad, reports-list-item-height);
+		padding: 0 22px 0 _get($icad, list-side-distance);
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		&:before {
+			content: '\e602';
+			position: absolute;
+			right: 0;
+			margin-right: _get($icad, list-side-distance);
+			margin-top: 7px;
+			background: _get($globals, blue);
+			color: _get($globals, white);
+		}
+	}
+
+	&__empty p {
+		color: _get($globals, disabled-text-color);
+		padding-left: _get($icad, list-side-distance);
+		margin-top: 10px;
+	}
+}
+
+
+// BLOCK: [remove-saved]
+$remove-saved: remove-saved;
+.remove-saved {
+	float: right;
+	width: $remove-item-width;
+	position: relative;
+	overflow: hidden;
+
+	&__trash {
+		width: 15px;
+		background: url(/typo3conf/ext/smi_analytics/Resources/Public/Img/ICAD/trash-icons.png) no-repeat 0 center;
+		float: right;
+		height: _get($icad, reports-list-item-height);
+		cursor: pointer;
+
+		&:hover {
+			background-position: -16px center;
+		}
+	}
+
+	&__confirmation {
+		display: none;
+		width: 130px;
+		height: _get($icad, reports-list-item-height);
+		float: right;
+		position: relative;
+	}
+
+	&__cancel-btn {
+		line-height: 27px;
+		margin-left: 10px;
+	}
+
+	&__remove-btn {
+		border: none;
+		color:  _get($globals, white);;
+		background: _get($globals, blue);
+		margin-top: 3px;
+		float: right;
+
+		&:hover {
+			background: rgba(21, 136, 191, 0.80);
+		}
+	}
+}

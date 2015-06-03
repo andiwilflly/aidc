@@ -1,0 +1,18 @@
+.compare-request-form {
+
+	&__items {
+		float: left;
+		padding-bottom: 178px;
+	}
+
+	&__buttons {
+		border-top: 1px solid _get($globals, middle-grey);
+		clear: both;
+		padding: 14px 0 25px;
+		text-align: right;
+
+		.simple-link {
+			margin-right: 23px;
+		}
+	}
+}
